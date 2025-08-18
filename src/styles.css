@@ -1,0 +1,111 @@
+:root {
+  --bg1: #f0fdf4;
+  --bg2: #ecfeff;
+  --card: #ffffff;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --danger: #ef4444;
+  --muted: #6b7280;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+.container {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+}
+.app {
+  width: 100%;
+  max-width: 420px;
+}
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 12px;
+}
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  padding: 28px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:active { transform: scale(.98); }
+.term { font-size: 2rem; font-weight: 700; }
+.hint { margin-top: 8px; color: var(--muted); }
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.btn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(16,185,129,.3);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease, background .15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn.secondary { background: #f3f4f6; color: #111827; box-shadow: none; }
+.btn.danger { background: var(--danger); box-shadow: 0 6px 18px rgba(239,68,68,.25); }
+.toolbar {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.toolbar .btn { font-size: .95rem; padding: 10px 12px; }
+.footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted);
+}
+.upload {
+  margin-top: 10px;
+  font-size: .9rem;
+  color: var(--muted);
+  text-align: center;
+}
+input[type="file"] { display: none; }
+.file-label {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #e5f7ee;
+  color: #065f46;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+body.dark {
+  background: linear-gradient(135deg,#111827,#1f2937);
+  color: #f9fafb;
+}
+body.dark .card {
+  background: #1f2937;
+  color: #f9fafb;
+}
+body.dark .btn.secondary {
+  background: #374151;
+  color: #f9fafb;
+}
