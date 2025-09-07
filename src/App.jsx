@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import defaultWords from './words.json'
+// import defaultWords from './words.json'
+import words1 from './words.json'
+import words2 from './words2.json'
+
 
 function shuffle(arr) {
   const a = [...arr]
@@ -38,10 +41,13 @@ export default function App() {
     document.body.classList.toggle('light', !dark)
   }, [dark])
 
+  const [setIndex, setSetIndex] = useState(0)
+
   const wordsBase = useMemo(() => {
-    const base = customSet && Array.isArray(customSet) && customSet.length ? customSet : defaultWords
+    const baseSet = setIndex === 0 ? words1 : words2
+    const base = customSet && Array.isArray(customSet) && customSet.length ? customSet : baseSet
     return base
-  }, [customSet])
+  }, [customSet, setIndex])
 
   const [queue, setQueue] = useState(() => [])
   useEffect(() => {
@@ -159,6 +165,9 @@ export default function App() {
           <button className="btn secondary" onClick={resetProgress}>איפוס סטטיסטיקות ♻️</button>
           <button className="btn secondary" onClick={() => setDark(d => !d)}>
             {dark ? '☀️ מצב יום' : '🌙 מצב לילה'}
+          </button>
+          <button className="btn secondary" onClick={() => setSetIndex(i => 1 - i)}>
+            {setIndex === 0 ? 'מילים מתקדמות' : 'מילים בסיסיות'}
           </button>
         </div>
       </div>
